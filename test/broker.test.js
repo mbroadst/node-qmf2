@@ -1,6 +1,6 @@
 'use strict';
 var AMQPClient = require('amqp10').Client,
-    Broker = require('../lib/broker');
+    Broker = require('../lib/broker-agent');
 
 var uri = 'amqp://system:manager@192.168.1.106/',
     client = new AMQPClient();
@@ -10,7 +10,7 @@ var broker;
 client.connect(uri)
   .then(function () {
     broker = new Broker(client);
-    return broker._classQuery('broker');
+    return broker._getAllBrokerObjects('broker');
   })
   .then(function(response) {
     console.log(response);
