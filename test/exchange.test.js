@@ -10,9 +10,8 @@ var broker;
 client.connect(uri)
   .then(function () {
     broker = new Broker(client);
-    return broker.getExchange('hive.inventory.guest');
-    // return broker.getAllExchanges();
-
+    // return broker.getExchange('hive.inventory.guest');
+    return broker.getAllExchanges();
   })
   .then(function(exchange) {
     console.log(exchange);

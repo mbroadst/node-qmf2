@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^3.9.3",
-    "bluebird": "^2.9.26"
+    "bluebird": "^2.9.26",
+    "debug": "^2.2.0"
   },
   "devDependencies": {
     "amqp10": "noodlefrenzy/node-amqp10#master"
