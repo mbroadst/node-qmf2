@@ -1,13 +1,10 @@
 {
   "name": "qmf2",
   "version": "0.0.1",
-  "description": "",
+  "description": "Apache Qpid QMF2 integration",
   "main": "lib/broker-agent.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "author": "Matt Broadstone",
+  "license": "MIT",
   "dependencies": {
     "lodash": "^3.9.3",
     "bluebird": "^2.9.26",

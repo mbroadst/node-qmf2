@@ -5,8 +5,7 @@ var bluebird    = require('bluebird'),
 
 bluebird.promisifyAll(AMQPClient.prototype);
 
-var uri = 'amqp://system:manager@192.168.1.106/';
-
+var uri = 'amqp://localhost';
 
 var client = new AMQPClient();
 client.connectAsync(uri)
