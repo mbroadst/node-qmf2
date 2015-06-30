@@ -1,10 +1,30 @@
 {
   "name": "qmf2",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Apache Qpid QMF2 integration",
   "main": "lib/broker-agent.js",
   "author": "Matt Broadstone",
   "license": "MIT",
+  "author": {
+    "name": "Matt Broadstone",
+    "email": "mbroadst@gmail.com"
+  },
+  "homepage": "https://github.com/mbroadst/node-qmf2",
+  "keywords": [
+    "qmf",
+    "qpid",
+    "broker",
+    "amqp",
+    "amqp 1.0",
+    "amqp-1-0",
+    "amqp10",
+    "messaging",
+    "queues"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mbroadst/node-qmf2.git"
+  },
   "dependencies": {
     "lodash": "^3.9.3",
     "bluebird": "^2.9.26",
