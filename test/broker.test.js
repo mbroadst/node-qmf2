@@ -9,6 +9,9 @@ var broker;
 client.connect(uri)
   .then(function () {
     broker = new Broker(client);
+    return broker.initialize();
+  })
+  .then(function() {
     return broker._getAllBrokerObjects('broker');
   })
   .then(function(response) {

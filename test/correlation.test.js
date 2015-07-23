@@ -1,7 +1,7 @@
 'use strict';
 var AMQPClient = require('amqp10').Client;
 
-var uri = 'amqp://system:manager@localhost/',
+var uri = 'amqp://localhost/',
     client = new AMQPClient();
 
 client.connect(uri)
