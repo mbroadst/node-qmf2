@@ -5,21 +5,19 @@ var amqp = require('amqp10'),
     expect = require('chai').expect;
 
 var test = {};
-describe('Broker', () => {
-  before(() => {
+describe('Broker', function() {
+  before(function() {
     test.client = new amqp.Client();
     return test.client.connect(config.address)
-      .then(() => {
+      .then(function() {
         test.agent = new BrokerAgent(test.client);
         return test.agent.initialize();
       });
   });
 
-  it('should support an echo command', () => {
+  it('should support an echo command', function() {
     return test.agent.getAllBrokers()
-      .then((brokers) => brokers.map(broker => broker.echo({ sequence: 0, body: 'test' })))
-      .map(response => {
-        expect(response).to.eql({ sequence: 0, body: 'test' });
-      });
+      .map(function(broker) { return broker.echo({ sequence: 0, body: 'test' }); })
+      .map(function(response) { expect(response).to.eql({ sequence: 0, body: 'test' }); });
   });
 });
