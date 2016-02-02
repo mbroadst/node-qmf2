@@ -1,26 +1,25 @@
 'use strict';
-var AMQPClient = require('amqp10').Client,
-    Broker = require('../lib/broker-agent');
+var amqp = require('amqp10'),
+    BrokerAgent = require('../lib/broker-agent'),
+    config = require('./config'),
+    expect = require('chai').expect;
 
-var uri = 'amqp://localhost',
-    client = new AMQPClient();
-
-var broker;
-client.connect(uri)
-  .then(function () {
-    broker = new Broker(client);
-    return broker.initialize();
-  })
-  .then(function() {
-    return broker._getAllBrokerObjects('broker');
-  })
-  .then(function(response) {
-    console.log(response);
-    process.exit(0);
-  })
-  .catch(function (e) {
-    console.log(typeof e);
-    console.log('error: ');
-    console.log(e);
-    process.exit(1);
+var test = {};
+describe('Broker', () => {
+  before(() => {
+    test.client = new amqp.Client();
+    return test.client.connect(config.address)
+      .then(() => {
+        test.agent = new BrokerAgent(test.client);
+        return test.agent.initialize();
+      });
   });
+
+  it('should support an echo command', () => {
+    return test.agent.getAllBrokers()
+      .then((brokers) => brokers.map(broker => broker.echo({ sequence: 0, body: 'test' })))
+      .map(response => {
+        expect(response).to.eql({ sequence: 0, body: 'test' });
+      });
+  });
+});
