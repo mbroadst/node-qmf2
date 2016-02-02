@@ -25,13 +25,14 @@
     "url": "https://github.com/mbroadst/node-qmf2.git"
   },
   "dependencies": {
-    "bluebird": "^2.9.26",
+    "bluebird": "^3.2.1",
     "debug": "^2.2.0",
     "uuid": "^2.0.1"
   },
   "devDependencies": {
     "amqp10": "^2.2.2",
     "chai": "^3.5.0",
+    "jshint": "^2.9.1",
     "mocha": "^2.4.5",
     "xml2js": "^0.4.16"
   }
