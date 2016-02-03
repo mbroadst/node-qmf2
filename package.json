@@ -1,6 +1,6 @@
 {
   "name": "qmf2",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Apache Qpid QMF2 integration",
   "main": "lib/broker-agent.js",
   "license": "MIT",
