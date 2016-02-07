@@ -12,6 +12,7 @@ before_install:
 
 before_script:
   - sudo /etc/init.d/qpidd restart
+  - sudo qpid-config add queue test.queue
 
 script:
   - make test

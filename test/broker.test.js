@@ -20,4 +20,12 @@ describe('Broker', function() {
       .map(function(broker) { return broker.echo({ sequence: 0, body: 'test' }); })
       .map(function(response) { expect(response).to.eql({ sequence: 0, body: 'test' }); });
   });
+
+  it('should support a name query', function() {
+    return test.agent.getQueue('test.queue')
+      .then(function(queue) {
+        expect(queue).to.exist;
+        expect(queue.name).to.eql('test.queue');
+      });
+  });
 });
