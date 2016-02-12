@@ -39,4 +39,8 @@ describe('Broker', function() {
     expect(promise).to.eventually.be.rejectedWith(errors.TimeoutError);
   });
 
+  it('should support getBrokerInfo alias', function() {
+    return test.agent.getBrokerInfo()
+      .then(function(info) { expect(info).to.exist; });
+  });
 });
