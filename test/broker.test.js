@@ -1,8 +1,12 @@
 'use strict';
 var amqp = require('amqp10'),
     BrokerAgent = require('../lib/broker-agent'),
+    errors = require('../lib/errors'),
     config = require('./config'),
+    chai = require('chai'),
     expect = require('chai').expect;
+
+chai.use(require('chai-as-promised'));
 
 var test = {};
 describe('Broker', function() {
@@ -28,4 +32,11 @@ describe('Broker', function() {
         expect(queue.name).to.eql('test.queue');
       });
   });
+
+  it('should support a timeout parameter', function() {
+    var promise = test.agent._getObjects('queue', { timeout: 1 })
+      .then(function(queues) { expect(queues, 'This should not happen').to.eql(false); });
+    expect(promise).to.eventually.be.rejectedWith(errors.TimeoutError);
+  });
+
 });
