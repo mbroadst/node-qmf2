@@ -43,4 +43,13 @@ describe('Broker', function() {
     return test.agent.getBrokerInfo()
       .then(function(info) { expect(info).to.exist; });
   });
+
+  it('should support JSON.stringify for class instances', function() {
+    return test.agent.getAllExchanges()
+      .then(function(exchanges) {
+        var test = JSON.stringify(exchanges);
+        expect(test).to.exist;
+      });
+  });
+
 });
